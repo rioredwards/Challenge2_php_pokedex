@@ -9,28 +9,39 @@
 <body>
 <?php
 
-$api_url = 'https://dummy.restapiexample.com/api/v1/employees';
+$dummy_api_url = 'https://dummy.restapiexample.com/api/v1/employees';
+$poke_api_url = 'https://pokeapi.co/api/v2/pokemon/ditto';
 
 // Read JSON file
-$json_data = file_get_contents($api_url);
+$dummy_json_data = file_get_contents($dummy_api_url);
+$poke_json_data = file_get_contents($poke_api_url);
 
 // Decode JSON data into PHP array
-$response_data = json_decode($json_data);
+$dummy_response_data = json_decode($dummy_json_data);
+$poke_response_data = json_decode($poke_json_data);
 
 // All user data exists in 'data' object
-$user_data = $response_data->data;
+$dummy_user_data = $dummy_response_data->data;
+$poke_ability_data = $poke_response_data->abilities;
 
 // Cut long data into small & select only first 10 records
-$user_data = array_slice($user_data, 0, 9);
+$dummy_user_data = array_slice($dummy_user_data, 0, 9);
+$poke_ability_data = array_slice($poke_ability_data, 0, 9);
 
 // Print data if need to debug
-//print_r($user_data);
+// print_r($dummy_user_data);
+// print_r($poke_ability_data);
 
 // Traverse array and display user data
-foreach ($user_data as $user) {
-	echo "name: ".$user->employee_name;
-	echo "<br />";
-	echo "name: ".$user->employee_age;
+// foreach ($dummy_user_data as $user) {
+// 	echo "name: ".$user->employee_name;
+// 	echo "<br />";
+// 	echo "name: ".$user->employee_age;
+// 	echo "<br /> <br />";
+// }
+
+foreach ($poke_ability_data as $ability) {
+	echo "name: ".$ability->ability->name;
 	echo "<br /> <br />";
 }
 
