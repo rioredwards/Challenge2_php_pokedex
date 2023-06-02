@@ -7,6 +7,11 @@
   <title>Hello World!</title>
 </head>
 <body>
+  <!-- Search bar -->
+  <form action="search.php" method="post">
+    <input type="text" name="search_input" placeholder="Search pokemon...">
+    <button type="submit">Search</button>
+  </form>
 <?php
 
 $poke_api_url = 'https://pokeapi.co/api/v2/pokemon?limit=10&offset=0';
